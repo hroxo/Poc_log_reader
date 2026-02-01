@@ -1,0 +1,98 @@
+{
+  "timestamp": "2026-02-01 16:16:01:879",
+  "event_type": "TransactionStart",
+  "details": {
+    "Id": "4801bb8b-4744-4920-84fe-1cd79cf10c36",
+    "SuspendAllowed": 1
+  }
+}
+{
+  "timestamp": "2026-02-01 16:16:02:879",
+  "event_type": "ItemPicked",
+  "details": {
+    "Description": "LEITE UHT M/G 1L",
+    "Price": 89,
+    "ExtendedPrice": 89,
+    "Quantity": 1,
+    "VoidFlag": false
+  }
+}
+{
+  "timestamp": "2026-02-01 16:16:04:879",
+  "event_type": "InterventionStart",
+  "details": {
+    "SummaryInstruction.1": "\n      NcrKey_ConfirmAge",
+    "EnterAssistMode": 1
+  }
+}
+{
+  "timestamp": "2026-02-01 16:16:07:879",
+  "event_type": "InterventionFinish",
+  "details": {
+    "Id": "OperatorOverride"
+  }
+}
+{
+  "timestamp": "2026-02-01 16:16:08:879",
+  "event_type": "PaymentStart",
+  "details": {
+    "TrainingMode": false
+  }
+}
+{
+  "timestamp": "2026-02-01 16:16:10:880",
+  "event_type": "PaymentFinish",
+  "details": {
+    "Id": "4801bb8b-4744-4920-84fe-1cd79cf10c36",
+    "Complete": 1
+  }
+}
+{
+  "timestamp": "2026-02-01 16:17:39:132",
+  "event_type": "TransactionStart",
+  "details": {
+    "Id": "b32a5257-be2d-44a7-b602-3cdd269df158",
+    "SuspendAllowed": 1
+  }
+}
+{
+  "timestamp": "2026-02-01 16:17:40:132",
+  "event_type": "ItemPicked",
+  "details": {
+    "Description": "LEITE UHT M/G 1L",
+    "Price": 89,
+    "ExtendedPrice": 89,
+    "Quantity": 1,
+    "VoidFlag": false
+  }
+}
+{
+  "timestamp": "2026-02-01 16:17:42:132",
+  "event_type": "InterventionStart",
+  "details": {
+    "SummaryInstruction.1": "\n      NcrKey_ConfirmAge",
+    "EnterAssistMode": 1
+  }
+}
+{
+  "timestamp": "2026-02-01 16:17:45:132",
+  "event_type": "InterventionFinish",
+  "details": {
+    "Id": "OperatorOverride"
+  }
+}
+{
+  "timestamp": "2026-02-01 16:17:46:133",
+  "event_type": "PaymentStart",
+  "details": {
+    "TrainingMode": false
+  }
+}
+{
+  "timestamp": "2026-02-01 16:17:48:133",
+  "event_type": "PaymentFinish",
+  "details": {
+    "Id": "b32a5257-be2d-44a7-b602-3cdd269df158",
+    "Complete": 1
+  }
+}
