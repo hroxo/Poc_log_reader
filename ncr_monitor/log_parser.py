@@ -9,7 +9,7 @@ from .models import LogEvent, EventType
 class LogParser:
     # Regex to match the start of a log line and capture timestamp and content.
     LOG_ENTRY_PATTERN = re.compile(
-        r"^\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}:\d{3})\]\[INFO\]:.*?(<message.*?</message>)",
+        r"^\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}:\d{3})\]\[INFO\]:.*?((?:CONTENT\s\[)?(<message.*?/message>)(?:\])?)",
         re.DOTALL
     )
 
@@ -48,7 +48,7 @@ class LogParser:
             return None
 
         timestamp_str = match.group(1)
-        raw_xml_content = match.group(2) # This is the full content including the <message> tag
+        raw_xml_content = match.group(3) # This is the pure XML content
 
         return self._process_xml_content(timestamp_str, raw_xml_content)
 
@@ -60,7 +60,7 @@ class LogParser:
             xml_string = xml_string.strip()
             if not xml_string:
                 return None
-
+            
             root = ET.fromstring(xml_string)
             message_id = root.get('id')
             message_name = root.get('name')
@@ -100,10 +100,8 @@ class LogParser:
             )
 
         except ET.ParseError as e:
-            # print(f"Warning: XML Parse error: {e} in '{xml_string[:200]}...'")
             return None # Return None for malformed XML
         except Exception as e:
-            # print(f"Warning: General error processing XML content: {e} in '{xml_string[:200]}...'")
             return None
 
     def _matches_definition(self, definition: Dict[str, Any], message_id: Optional[str], message_name: Optional[str], raw_details: Dict[str, Any]) -> bool:

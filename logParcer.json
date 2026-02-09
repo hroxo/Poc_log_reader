@@ -1,6 +1,30 @@
 {
   "event_definitions": [
     {
+      "event_type": "ITEM_MODIFIER",
+      "match_type": "name",
+      "match_value": "ItemSold",
+      "conditions": [
+        {
+          "field": "DiscountAmount",
+          "operator": "is_not_null_or_empty"
+        },
+        {
+          "field": "DiscountDescription.1",
+          "operator": "is_not_null_or_empty",
+          "logical_operator": "or"
+        }
+      ],
+      "fields_to_extract": {
+        "UPC": { "target_name": "upc", "ftype": "string" },
+        "ItemNumber": { "target_name": "item_number", "ftype": "int" },
+        "DiscountAmount": { "target_name": "discount_amount", "ftype": "int" },
+        "DiscountDescription.1": { "target_name": "discount_description", "ftype": "string" },
+        "AssociatedItemNumber": { "target_name": "associated_item_number", "ftype": "int" },
+        "RewardLocation": { "target_name": "reward_location", "ftype": "int" }
+      }
+    },
+    {
       "event_type": "ITEM_SOLD",
       "match_type": "name",
       "match_value": "ItemSold",
@@ -68,3 +92,4 @@
     }
   }
 }
+
