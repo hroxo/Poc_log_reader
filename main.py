@@ -1,37 +1,26 @@
-import sys
-from src.parser import LogParser
-
+from ncr_monitor import LogWatcher
+import os
+import json
 
 def main():
-    log_file = "logSelfcheckout.log"
+    log_file_path = "logSelfcheckout.log" # Assuming log file is in the root directory
 
-    # Allow overriding log file via command line argument
-    if len(sys.argv) > 1:
-        log_file = sys.argv[1]
+    if not os.path.exists(log_file_path):
+        print(f"Error: Log file not found at '{log_file_path}'")
+        print("Please ensure 'logSelfcheckout.log' is in the same directory as main.py")
+        return
 
-    print(f"Monitoring {log_file} for new events...")
+    watcher = LogWatcher(log_file=log_file_path)
+    print(f"Monitoring log file: {log_file_path}")
     print("Press Ctrl+C to stop.")
 
-    parser = LogParser(log_file)
-    output_file = "logParcer.json"
-
     try:
-        with open(output_file, "a", encoding="utf-8") as f_out:
-            # Use follow() to tail the file
-            for event in parser.follow():
-                json_str = event.to_json()
-                
-                # Print to console
-                print(json_str)
-                sys.stdout.flush()
-
-                # Write to file
-                f_out.write(json_str + "\n")
-                f_out.flush()
-
+        for event in watcher.stream():
+            print(event.to_json())
     except KeyboardInterrupt:
-        print("\nStopped.")
-
+        print("\nMonitoring stopped by user.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
 
 if __name__ == "__main__":
     main()

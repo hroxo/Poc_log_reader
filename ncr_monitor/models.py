@@ -5,12 +5,16 @@ import json
 
 
 class EventType(Enum):
-    TRANSACTION_START = "TransactionStart"
-    ITEM_PICKED = "ItemPicked"
-    INTERVENTION_START = "InterventionStart"
-    INTERVENTION_FINISH = "InterventionFinish"
-    PAYMENT_START = "PaymentStart"
-    PAYMENT_FINISH = "PaymentFinish"
+    TRANSACTION_START = "StartTransaction"
+    TRANSACTION_END = "EndTransaction"
+    ITEM_SOLD = "ItemSold"
+    ITEM_MODIFIER = "ItemModifier" # For discounts/modifications to items
+    TRANSACTION_SUMMARY = "TransactionSummary" # For totals
+    TENDER_START = "TenderStart"
+    TENDER_ACCEPTED = "TenderAccepted"
+    ASSIST_MODE_ENTER = "AssistModeEnter"
+    ASSIST_MODE_EXIT = "AssistModeExit"
+    GENERIC_MESSAGE = "GenericMessage" # For any unhandled XML messages
 
 
 @dataclass

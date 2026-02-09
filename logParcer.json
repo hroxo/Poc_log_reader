@@ -1,98 +1,70 @@
 {
-  "timestamp": "2026-02-01 16:16:01:879",
-  "event_type": "TransactionStart",
-  "details": {
-    "Id": "4801bb8b-4744-4920-84fe-1cd79cf10c36",
-    "SuspendAllowed": 1
-  }
-}
-{
-  "timestamp": "2026-02-01 16:16:02:879",
-  "event_type": "ItemPicked",
-  "details": {
-    "Description": "LEITE UHT M/G 1L",
-    "Price": 89,
-    "ExtendedPrice": 89,
-    "Quantity": 1,
-    "VoidFlag": false
-  }
-}
-{
-  "timestamp": "2026-02-01 16:16:04:879",
-  "event_type": "InterventionStart",
-  "details": {
-    "SummaryInstruction.1": "\n      NcrKey_ConfirmAge",
-    "EnterAssistMode": 1
-  }
-}
-{
-  "timestamp": "2026-02-01 16:16:07:879",
-  "event_type": "InterventionFinish",
-  "details": {
-    "Id": "OperatorOverride"
-  }
-}
-{
-  "timestamp": "2026-02-01 16:16:08:879",
-  "event_type": "PaymentStart",
-  "details": {
-    "TrainingMode": false
-  }
-}
-{
-  "timestamp": "2026-02-01 16:16:10:880",
-  "event_type": "PaymentFinish",
-  "details": {
-    "Id": "4801bb8b-4744-4920-84fe-1cd79cf10c36",
-    "Complete": 1
-  }
-}
-{
-  "timestamp": "2026-02-01 16:17:39:132",
-  "event_type": "TransactionStart",
-  "details": {
-    "Id": "b32a5257-be2d-44a7-b602-3cdd269df158",
-    "SuspendAllowed": 1
-  }
-}
-{
-  "timestamp": "2026-02-01 16:17:40:132",
-  "event_type": "ItemPicked",
-  "details": {
-    "Description": "LEITE UHT M/G 1L",
-    "Price": 89,
-    "ExtendedPrice": 89,
-    "Quantity": 1,
-    "VoidFlag": false
-  }
-}
-{
-  "timestamp": "2026-02-01 16:17:42:132",
-  "event_type": "InterventionStart",
-  "details": {
-    "SummaryInstruction.1": "\n      NcrKey_ConfirmAge",
-    "EnterAssistMode": 1
-  }
-}
-{
-  "timestamp": "2026-02-01 16:17:45:132",
-  "event_type": "InterventionFinish",
-  "details": {
-    "Id": "OperatorOverride"
-  }
-}
-{
-  "timestamp": "2026-02-01 16:17:46:133",
-  "event_type": "PaymentStart",
-  "details": {
-    "TrainingMode": false
-  }
-}
-{
-  "timestamp": "2026-02-01 16:17:48:133",
-  "event_type": "PaymentFinish",
-  "details": {
-    "Id": "b32a5257-be2d-44a7-b602-3cdd269df158",
-    "Complete": 1
+  "event_definitions": [
+    {
+      "event_type": "ITEM_SOLD",
+      "match_type": "name",
+      "match_value": "ItemSold",
+      "fields_to_extract": {
+        "Description": { "target_name": "description", "ftype": "string" },
+        "UPC": { "target_name": "upc", "ftype": "string" },
+        "Department": { "target_name": "department", "ftype": "string" },
+        "ItemNumber": { "target_name": "item_number", "ftype": "int" },
+        "Price": { "target_name": "price", "ftype": "int" },
+        "ExtendedPrice": { "target_name": "extended_price", "ftype": "int" },
+        "Quantity": { "target_name": "quantity", "ftype": "int" }
+      }
+    },
+    {
+      "event_type": "TRANSACTION_START",
+      "match_type": "name",
+      "match_value": "StartTransaction",
+      "fields_to_extract": {}
+    },
+    {
+      "event_type": "TRANSACTION_END",
+      "match_type": "name",
+      "match_value": "EndTransaction",
+      "fields_to_extract": {}
+    },
+    {
+      "event_type": "TENDER_ACCEPTED",
+      "match_type": "name",
+      "match_value": "TenderAccepted",
+      "fields_to_extract": {
+        "Amount": { "target_name": "amount", "ftype": "int" },
+        "TenderType": { "target_name": "tender_type", "ftype": "string" },
+        "Description": { "target_name": "description", "ftype": "string" }
+      }
+    },
+    {
+      "event_type": "ASSIST_MODE_ENTER",
+      "match_type": "name",
+      "match_value": "EnterAssistMode",
+      "fields_to_extract": {}
+    },
+    {
+      "event_type": "ASSIST_MODE_EXIT",
+      "match_type": "name",
+      "match_value": "ExitAssistMode",
+      "fields_to_extract": {}
+    },
+    {
+        "event_type": "TRANSACTION_SUMMARY",
+        "match_type": "name",
+        "match_value": "Totals",
+        "fields_to_extract": {
+            "TotalAmount": { "target_name": "total_amount", "ftype": "int" },
+            "ItemCount": { "target_name": "item_count", "ftype": "int" },
+            "BalanceDue": { "target_name": "balance_due", "ftype": "int" },
+            "DiscountAmount": { "target_name": "discount_amount", "ftype": "int" }
+        }
+    }
+  ],
+  "default_event": {
+    "event_type": "GENERIC_MESSAGE",
+    "fields_to_extract": {
+      "message_id": { "target_name": "message_id", "source_name": "message_id" },
+      "message_name": { "target_name": "message_name", "source_name": "message_name" }
+    }
   }
 }
