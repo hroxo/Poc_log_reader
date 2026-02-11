@@ -46,3 +46,8 @@
 {"timestamp":"2026-01-26 19:00:04:000","event_type":"ItemSold","data":{"description":"BURST ITEM 4","upc":"0000000000004","price":450,"quantity":1}}
 {"timestamp":"2026-01-26 19:00:05:000","event_type":"ItemSold","data":{"description":"BURST ITEM 5","upc":"0000000000005","price":550,"quantity":1}}
 {"timestamp":"2026-01-26 19:10:01:000","event_type":"Totals","data":{"total_amount":9999,"item_count":99,"balance_due":9999}}
+{"timestamp":"2026-01-30 16:54:06:069","event_type":"ItemSold","data":{"description":"RTD JACK DANIEL","upc":"5449000168481","price":299,"quantity":1}}
+{"timestamp":"2026-01-30 16:54:06:069","event_type":"ItemSold","data":{"description":"RTD JACK DANIEL","upc":"5449000168481","price":299,"quantity":1}}
+{"timestamp":"2026-01-26 18:55:57:953","event_type":"StartTransaction","data":{}}
+{"timestamp":"2026-01-26 18:48:12:955","event_type":"EndTransaction","data":{}}
+{"timestamp":"2026-01-30 16:54:06:069","event_type":"ItemSold","data":{"description":"RTD JACK DANIEL","upc":"5449000168481","price":299,"quantity":1}}
