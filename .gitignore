@@ -1,6 +1,8 @@
-/.claude/
-/CLAUDE.md
-/test.sh
-/TEST.md
-/TODO.md
+.claude/
+# Remove cloud utils
+CLAUDE.md
+test.sh
+TEST.md
+TODO.md
+# Remove object files
 *.o
