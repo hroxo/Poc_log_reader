@@ -134,7 +134,7 @@ static void	consume_inotify(int inotify_fd)
 		;
 }
 
-void	start_monitoring(const char *log_file_path)
+void	start_monitoring(const char *log_file_path, const char *output_path)
 {
 	int				fd;
 	t_parse_state	state;
@@ -176,28 +176,34 @@ void	start_monitoring(const char *log_file_path)
 		close(fd);
 		return ;
 	}
-	output_file = fopen("output.json", "a");
-	if (!output_file)
+	output_file = NULL;
+	if (output_path)
 	{
-		perror("Error opening output.json");
-		inotify_rm_watch(inotify_fd, watch_fd);
-		close(inotify_fd);
-		close(fd);
-		return ;
+		output_file = fopen(output_path, "a");
+		if (!output_file)
+		{
+			perror("Error opening output file");
+			inotify_rm_watch(inotify_fd, watch_fd);
+			close(inotify_fd);
+			close(fd);
+			return ;
+		}
 	}
 	init_state(&state);
 	pfd.fd = inotify_fd;
 	pfd.events = POLLIN;
+	drain_lines(fd, &state, output_file);
 	while (g_running)
 	{
-		drain_lines(fd, &state, output_file);
-		if (poll(&pfd, 1, 200) > 0)
+		if (poll(&pfd, 1, 500) > 0)
 			consume_inotify(inotify_fd);
+		drain_lines(fd, &state, output_file);
 	}
 	if (state.in_message)
 		process_message(&state, output_file);
 	reset_state(&state);
-	fclose(output_file);
+	if (output_file)
+		fclose(output_file);
 	inotify_rm_watch(inotify_fd, watch_fd);
 	close(inotify_fd);
 	close(fd);

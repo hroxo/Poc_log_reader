@@ -60,13 +60,10 @@ char	*ft_glstrjoin(char *s1, char *s2)
 
 size_t	has_nl(char *str)
 {
-	char	*nl;
-
 	if (!str)
 		return (0);
-	nl = strchr(str, '\n');
-	if (nl)
-		return (nl - str);
+	if (strchr(str, '\n'))
+		return (1);
 	return (0);
 }
 

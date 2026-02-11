@@ -35,11 +35,13 @@ char	*read_file(char *stash, int fd)
 	char	*buf;
 	int		f_r;
 
-	f_r = 1; // Initialize to 1 to enter the loop
+	if (has_nl(stash))
+		return (stash);
+	f_r = 1;
 	buf = ft_glcalloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!buf)
 		return (NULL);
-	while (!has_nl(stash)) // Continue loop as long as no newline is found in stash
+	while (!has_nl(stash))
 	{
 		f_r = read(fd, buf, BUFFER_SIZE);
 

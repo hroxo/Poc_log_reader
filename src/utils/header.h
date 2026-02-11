@@ -47,7 +47,7 @@ size_t	has_nl(char *str);
 
 
 // log_reader.c functions
-void    start_monitoring(const char *log_file_path);
+void    start_monitoring(const char *log_file_path, const char *output_path);
 
 // info_extractor.c functions
 t_log_entry *extract_info(const char *log_line);

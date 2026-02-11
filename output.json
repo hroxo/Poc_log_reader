@@ -1,54 +1,8 @@
-{
-  "timestamp": "2026-01-26 18:48:12:955",
-  "event_type": "EndTransaction",
-  "data": {
-
-  }
-}
-{
-  "timestamp": "2026-01-30 16:54:06:069",
-  "event_type": "ItemSold",
-  "data": {
-    "description": "RTD JACK DANIEL",
-    "upc": "5449000168481",
-    "item_number": 1,
-    "price": 299,
-    "quantity": 1
-  }
-}
-{"timestamp":"2026-01-27 18:02:36:171","event_type":"ExitAssistMode","data":{}}
-{"timestamp":"2026-01-27 18:02:01:455","event_type":"EnterAssistMode","data":{}}
 {"timestamp":"2026-01-26 18:55:57:953","event_type":"StartTransaction","data":{}}
 {"timestamp":"2026-01-30 16:54:06:069","event_type":"ItemSold","data":{"description":"RTD JACK DANIEL","upc":"5449000168481","price":299,"quantity":1}}
-{"timestamp":"2026-01-30 16:54:06:069","event_type":"ItemSold","data":{"description":"RTD JACK DANIEL","upc":"5449000168481","price":299,"quantity":1}}
-{"timestamp":"2026-01-30 16:55:25:998","event_type":"Receipt","data":{}}
-{"timestamp":"2026-01-30 16:55:25:999","event_type":"EndTransaction","data":{}}
-{"timestamp":"2026-01-30 16:55:25:999","event_type":"EndTransaction","data":{}}
-{"timestamp":"2026-01-30 16:55:25:999","event_type":"EndTransaction","data":{}}
-{"timestamp":"2026-01-26 18:46:04:584","event_type":"StartTransaction","data":{}}
-{"timestamp":"2026-01-26 18:46:04:584","event_type":"ItemSold","data":{"description":"TEST INSTANT ITEM","upc":"1234567890123","price":999,"quantity":2}}
-{"timestamp":"2026-01-26 18:46:01:584","event_type":"ItemSold","data":{"description":"RAPID ITEM 1","upc":"5601517310971","price":100,"quantity":1}}
-{"timestamp":"2026-01-26 18:46:02:584","event_type":"ItemSold","data":{"description":"RAPID ITEM 2","upc":"5601517310972","price":200,"quantity":1}}
-{"timestamp":"2026-01-26 18:46:03:584","event_type":"ItemSold","data":{"description":"RAPID ITEM 3","upc":"5601517310973","price":300,"quantity":1}}
-{"timestamp":"2026-01-30 16:54:06:069","event_type":"ItemSold","data":{"description":"RTD JACK DANIEL","upc":"5449000168481","price":299,"quantity":1}}
-{"timestamp":"2026-01-30 16:54:06:069","event_type":"ItemSold","data":{"description":"RTD JACK DANIEL","upc":"5449000168481","price":299,"quantity":1}}
-{"timestamp":"2026-01-26 18:55:57:953","event_type":"StartTransaction","data":{}}
-{"timestamp":"2026-01-26 18:46:04:584","event_type":"ItemSold","data":{"description":"PIRI PIRI EX.FOR.SAC.PALADIN 75","upc":"5601517310979","price":209,"quantity":1}}
 {"timestamp":"2026-01-26 18:46:04:635","event_type":"Discount","data":{"upc":"56015173109791","discount_amount":53,"discount_description":"POUPANCA"}}
 {"timestamp":"2026-01-26 18:46:04:687","event_type":"Totals","data":{"total_amount":3526,"item_count":7,"balance_due":3526}}
 {"timestamp":"2026-01-26 18:56:55:653","event_type":"TenderAccepted","data":{"amount":231,"tender_type":"Credit","description":"Cartao Credito"}}
 {"timestamp":"2026-01-27 18:02:01:455","event_type":"EnterAssistMode","data":{}}
 {"timestamp":"2026-01-27 18:02:36:171","event_type":"ExitAssistMode","data":{}}
 {"timestamp":"2026-01-26 18:57:00:911","event_type":"EndTransaction","data":{}}
-{"timestamp":"2026-01-26 19:00:01:000","event_type":"ItemSold","data":{"description":"BURST ITEM 1","upc":"0000000000001","price":150,"quantity":1}}
-{"timestamp":"2026-01-26 19:00:02:000","event_type":"ItemSold","data":{"description":"BURST ITEM 2","upc":"0000000000002","price":250,"quantity":1}}
-{"timestamp":"2026-01-26 19:00:03:000","event_type":"ItemSold","data":{"description":"BURST ITEM 3","upc":"0000000000003","price":350,"quantity":1}}
-{"timestamp":"2026-01-26 19:00:04:000","event_type":"ItemSold","data":{"description":"BURST ITEM 4","upc":"0000000000004","price":450,"quantity":1}}
-{"timestamp":"2026-01-26 19:00:05:000","event_type":"ItemSold","data":{"description":"BURST ITEM 5","upc":"0000000000005","price":550,"quantity":1}}
-{"timestamp":"2026-01-26 19:10:01:000","event_type":"Totals","data":{"total_amount":9999,"item_count":99,"balance_due":9999}}
-{"timestamp":"2026-01-30 16:54:06:069","event_type":"ItemSold","data":{"description":"RTD JACK DANIEL","upc":"5449000168481","price":299,"quantity":1}}
-{"timestamp":"2026-01-30 16:54:06:069","event_type":"ItemSold","data":{"description":"RTD JACK DANIEL","upc":"5449000168481","price":299,"quantity":1}}
-{"timestamp":"2026-01-26 18:55:57:953","event_type":"StartTransaction","data":{}}
-{"timestamp":"2026-01-26 18:48:12:955","event_type":"EndTransaction","data":{}}
-{"timestamp":"2026-01-30 16:54:06:069","event_type":"ItemSold","data":{"description":"RTD JACK DANIEL","upc":"5449000168481","price":299,"quantity":1}}
-{"timestamp":"2026-01-26 18:48:12:955","event_type":"EndTransaction","data":{}}
