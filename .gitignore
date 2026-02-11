@@ -1,4 +1,6 @@
-.venv/
-venv/
-__pycache__/
-*.egg*/
+.claude/
+CLAUDE.md
+test.sh
+TEST.md
+TODO.md
+*.o
