@@ -16,3 +16,19 @@
     "quantity": 1
   }
 }
+{"timestamp":"2026-01-27 18:02:36:171","event_type":"ExitAssistMode","data":{}}
+{"timestamp":"2026-01-27 18:02:01:455","event_type":"EnterAssistMode","data":{}}
+{"timestamp":"2026-01-26 18:55:57:953","event_type":"StartTransaction","data":{}}
+{"timestamp":"2026-01-30 16:54:06:069","event_type":"ItemSold","data":{"description":"RTD JACK DANIEL","upc":"5449000168481","price":299,"quantity":1}}
+{"timestamp":"2026-01-30 16:54:06:069","event_type":"ItemSold","data":{"description":"RTD JACK DANIEL","upc":"5449000168481","price":299,"quantity":1}}
+{"timestamp":"2026-01-30 16:55:25:998","event_type":"Receipt","data":{}}
+{"timestamp":"2026-01-30 16:55:25:999","event_type":"EndTransaction","data":{}}
+{"timestamp":"2026-01-30 16:55:25:999","event_type":"EndTransaction","data":{}}
+{"timestamp":"2026-01-30 16:55:25:999","event_type":"EndTransaction","data":{}}
+{"timestamp":"2026-01-26 18:46:04:584","event_type":"StartTransaction","data":{}}
+{"timestamp":"2026-01-26 18:46:04:584","event_type":"ItemSold","data":{"description":"TEST INSTANT ITEM","upc":"1234567890123","price":999,"quantity":2}}
+{"timestamp":"2026-01-26 18:46:01:584","event_type":"ItemSold","data":{"description":"RAPID ITEM 1","upc":"5601517310971","price":100,"quantity":1}}
+{"timestamp":"2026-01-26 18:46:02:584","event_type":"ItemSold","data":{"description":"RAPID ITEM 2","upc":"5601517310972","price":200,"quantity":1}}
+{"timestamp":"2026-01-26 18:46:03:584","event_type":"ItemSold","data":{"description":"RAPID ITEM 3","upc":"5601517310973","price":300,"quantity":1}}
+{"timestamp":"2026-01-30 16:54:06:069","event_type":"ItemSold","data":{"description":"RTD JACK DANIEL","upc":"5449000168481","price":299,"quantity":1}}
+{"timestamp":"2026-01-30 16:54:06:069","event_type":"ItemSold","data":{"description":"RTD JACK DANIEL","upc":"5449000168481","price":299,"quantity":1}}

@@ -108,13 +108,40 @@ static void	process_line(const char *line, t_parse_state *state,
 	}
 }
 
+static int	drain_lines(int fd, t_parse_state *state, FILE *output_file)
+{
+	char	*line;
+	int		count;
+
+	count = 0;
+	while (g_running)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		process_line(line, state, output_file);
+		free(line);
+		count++;
+	}
+	return (count);
+}
+
+static void	consume_inotify(int inotify_fd)
+{
+	char	buf[sizeof(struct inotify_event) + 256];
+
+	while (read(inotify_fd, buf, sizeof(buf)) > 0)
+		;
+}
+
 void	start_monitoring(const char *log_file_path)
 {
 	int				fd;
-	char			*line;
 	t_parse_state	state;
 	FILE			*output_file;
-	int				idle_count;
+	int				inotify_fd;
+	int				watch_fd;
+	struct pollfd	pfd;
 
 	fd = open(log_file_path, O_RDONLY);
 	if (fd < 0)
@@ -128,40 +155,50 @@ void	start_monitoring(const char *log_file_path)
 		close(fd);
 		return ;
 	}
-	while ((line = get_next_line(fd)) != NULL)
-		free(line);
+	{
+		char	*discard;
+
+		while ((discard = get_next_line(fd)) != NULL)
+			free(discard);
+	}
+	inotify_fd = inotify_init1(IN_NONBLOCK);
+	if (inotify_fd < 0)
+	{
+		perror("Error initializing inotify");
+		close(fd);
+		return ;
+	}
+	watch_fd = inotify_add_watch(inotify_fd, log_file_path, IN_MODIFY);
+	if (watch_fd < 0)
+	{
+		perror("Error adding inotify watch");
+		close(inotify_fd);
+		close(fd);
+		return ;
+	}
 	output_file = fopen("output.json", "a");
 	if (!output_file)
 	{
 		perror("Error opening output.json");
+		inotify_rm_watch(inotify_fd, watch_fd);
+		close(inotify_fd);
 		close(fd);
 		return ;
 	}
 	init_state(&state);
-	idle_count = 0;
+	pfd.fd = inotify_fd;
+	pfd.events = POLLIN;
 	while (g_running)
 	{
-		line = get_next_line(fd);
-		if (line)
-		{
-			process_line(line, &state, output_file);
-			free(line);
-			idle_count = 0;
-		}
-		else
-		{
-			if (idle_count < 10)
-				usleep(1000);
-			else if (idle_count < 100)
-				usleep(5000);
-			else
-				usleep(10000);
-			idle_count++;
-		}
+		drain_lines(fd, &state, output_file);
+		if (poll(&pfd, 1, 200) > 0)
+			consume_inotify(inotify_fd);
 	}
 	if (state.in_message)
 		process_message(&state, output_file);
 	reset_state(&state);
 	fclose(output_file);
+	inotify_rm_watch(inotify_fd, watch_fd);
+	close(inotify_fd);
 	close(fd);
 }

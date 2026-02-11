@@ -1,6 +1,6 @@
-.claude/
-CLAUDE.md
-test.sh
-TEST.md
-TODO.md
+/.claude/
+/CLAUDE.md
+/test.sh
+/TEST.md
+/TODO.md
 *.o

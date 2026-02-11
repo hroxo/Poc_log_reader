@@ -9,6 +9,8 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <time.h> // For timestamp generation
+# include <sys/inotify.h> // For inotify file monitoring
+# include <poll.h> // For poll()
 
 # define BUFFER_SIZE 8192 // For get_next_line
 
