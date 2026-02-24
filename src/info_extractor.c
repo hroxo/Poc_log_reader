@@ -145,6 +145,14 @@ t_log_entry *extract_info(const char *log_line) {
         }
     }
 
+    // Detect EnteredStoreMode sent as a Command message with Command.1 field
+    if (entry->event_type && strcmp(entry->event_type, "Command") == 0) {
+        if (strstr(log_line, "ftype=\"string\">EnteredStoreMode</field>")) {
+            free(entry->event_type);
+            entry->event_type = safe_strdup("EnteredStoreMode");
+        }
+    }
+
     if (!entry->event_type) {
         free_log_entry(entry);
         return NULL;

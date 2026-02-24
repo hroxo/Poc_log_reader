@@ -1,3 +1,8 @@
-
-{"timestamp":"2026-01-30 16:54:06:069","event_type":"ItemSold","data":{"description":"RTD JACK DANIEL","upc":"5449000168481","price":299,"quantity":1}}
-{"timestamp":"2026-01-26 18:55:57:953","event_type":"StartTransaction","data":{}}
+{"timestamp":"2026-01-26 18:55:57:953","event_type":"StartTransaction","data":{},"realtime":"2026-02-24 11:48:05:433"}
+{"timestamp":"2026-01-30 16:54:06:069","event_type":"ItemSold","data":{"description":"RTD JACK DANIEL","upc":"5449000168481","price":299,"quantity":1},"realtime":"2026-02-24 11:48:05:433"}
+{"timestamp":"2026-01-26 18:46:04:635","event_type":"Discount","data":{"upc":"56015173109791","discount_amount":53,"discount_description":"POUPANCA"},"realtime":"2026-02-24 11:48:05:433"}
+{"timestamp":"2026-01-26 18:46:04:687","event_type":"Totals","data":{"total_amount":3526,"item_count":7,"balance_due":3526},"realtime":"2026-02-24 11:48:05:433"}
+{"timestamp":"2026-01-26 18:56:55:653","event_type":"TenderAccepted","data":{"amount":231,"tender_type":"Credit","description":"Cartao Credito"},"realtime":"2026-02-24 11:48:05:433"}
+{"timestamp":"2026-01-27 18:02:01:455","event_type":"EnterAssistMode","data":{},"realtime":"2026-02-24 11:48:05:433"}
+{"timestamp":"2026-01-27 18:02:36:171","event_type":"ExitAssistMode","data":{},"realtime":"2026-02-24 11:48:05:433"}
+{"timestamp":"2026-01-26 18:57:00:911","event_type":"EndTransaction","data":{},"realtime":"2026-02-24 11:48:05:433"}

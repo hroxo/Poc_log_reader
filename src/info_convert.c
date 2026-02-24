@@ -1,5 +1,23 @@
 #include "utils/header.h"
 
+static char	*get_realtime_string(void)
+{
+	struct timespec	ts;
+	struct tm		*tm_info;
+	char			base_time[24];
+	char			*realtime_str;
+
+	realtime_str = malloc(32);
+	if (!realtime_str)
+		return NULL;
+	clock_gettime(CLOCK_REALTIME, &ts);
+	tm_info = localtime(&ts.tv_sec);
+	strftime(base_time, sizeof(base_time), "%Y-%m-%d %H:%M:%S", tm_info);
+	snprintf(realtime_str, 32, "%s:%03d", base_time,
+		(int)(ts.tv_nsec / 1000000));
+	return realtime_str;
+}
+
 static void	append_buf(char **buf, size_t *size, size_t *len, const char *str)
 {
 	size_t	str_len;
@@ -122,7 +140,21 @@ void	convert_to_json(t_log_entry *entry, FILE *output_file)
 		build_totals(entry, &buf, &sz, &ln);
 	else if (strcmp(entry->event_type, "TenderAccepted") == 0)
 		build_tender(entry, &buf, &sz, &ln);
-	append_buf(&buf, &sz, &ln, "}}\n");
+	{
+		char	realtime_segment[64];
+		char	*realtime_str;
+
+		realtime_str = get_realtime_string();
+		if (realtime_str)
+		{
+			snprintf(realtime_segment, sizeof(realtime_segment),
+				"},\"realtime\":\"%s\"}\n", realtime_str);
+			free(realtime_str);
+		}
+		else
+			strncpy(realtime_segment, "}}\n", sizeof(realtime_segment));
+		append_buf(&buf, &sz, &ln, realtime_segment);
+	}
 	fwrite(buf, 1, ln, stdout);
 	if (output_file)
 	{
